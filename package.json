@@ -2,11 +2,13 @@
   "name": "git-project",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start": "http-server",
+    "lint": "tslint \"src/**/*.ts\"",
+    "test": "ng test",
+    "pree2e": "webdriver-manager update",
+    "e2e": "protractor",
+    "preinstall": "npm install -g angular-cli",
+    "postinstall": "ng build && mv dist/* ."
   },
   "private": true,
   "dependencies": {
