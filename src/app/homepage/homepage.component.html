@@ -1,0 +1,35 @@
+
+<div class="main">
+  <div class="header">
+    <div class="imgBox">
+      <img [src]="personalData?.avatar_url">
+      <div>{{personalData?.html_url}}</div>
+    </div>
+    <div class="personaldata">
+      <div><h3>{{personalData?.name}}</h3></div>
+      <div><img src="/assets/location.png" class="locn"/>{{personalData?.location}}</div>
+      <div>{{personalData?.twitter_username}}</div>
+      <div>{{personalData?.bio}}</div>
+    </div>
+  </div>
+  <div class="repoContainer">
+    <div *ngFor="let repo of personalRepo | paginate: { itemsPerPage: 10, currentPage: p, totalItems: count }">
+      <div class="repoDetails">
+        <p>{{repo.name}}</p>
+        <p>{{repo.description}}</p>
+        <ul>
+          <li *ngFor="let topic of repo.topics">{{topic}}</li>
+        </ul>
+      </div>
+
+
+    </div>
+
+  </div>
+  <div id="pagination" class="pagination">
+    <pagination-controls (pageChange)="p=$event" (click)="pageChanged(p,$event)"></pagination-controls>
+  </div>
+</div>
+<div *ngIf = "loading" class="loader">
+  <img src="assets/loader.gif" class="imgloader"/>
+</div>
