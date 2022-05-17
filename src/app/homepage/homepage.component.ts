@@ -35,12 +35,12 @@ export class HomepageComponent implements OnInit {
     this.loading = true;
     this.pageNumber = 1
     var v = 'simisl'
-    this.http.get<personal>('https://api.github.com/users/i5ting ').subscribe(data=>{
+    this.http.get<personal>('https://api.github.com/users/simisl ').subscribe(data=>{
       this.personalData = data
       this.count = this.personalData.public_repos;
       console.log('data',data)
     })
-      this.http.get<repo[]>(`https://api.github.com/users/i5ting/repos?q=addClass+i5ting:mozilla&per_page=10&page=${this.pageNumber}`).subscribe(data=>{
+      this.http.get<repo[]>(`https://api.github.com/users/simisl/repos?q=addClass+simisl:mozilla&per_page=10&page=${this.pageNumber}`).subscribe(data=>{
 
       this.personalRepo = data
       this.loading = false
@@ -50,7 +50,7 @@ export class HomepageComponent implements OnInit {
     this.loading = true
     console.log(pageNo,e)
     this.pageNumber = pageNo;
-    this.http.get<repo[]>(`https://api.github.com/users/i5ting/repos?q=addClass+i5ting:mozilla&per_page=10&page=${this.pageNumber}`).subscribe(data=>{
+    this.http.get<repo[]>(`https://api.github.com/users/simisl/repos?q=addClass+simisl:mozilla&per_page=10&page=${this.pageNumber}`).subscribe(data=>{
       this.personalRepo = data
       this.loading = false
     })
